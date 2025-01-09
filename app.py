@@ -36,6 +36,6 @@ def home():
     """
     
     return render_template_string(html_template, table=table_html, average_age=average_age)
-
+#
 if __name__ == '__main__':
     app.run()
