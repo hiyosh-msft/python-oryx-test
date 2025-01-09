@@ -60,12 +60,6 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
-      - name: Deploy startup script
-        uses: azure/cli@v2
-        with:
-          inlineScript: |
-            az webapp deploy --src-path ${{ github.workspace }}/startup.sh --name python-oryx-hiyosh --resource-group python-oryx-rg --type startup --track-status false
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -73,6 +67,12 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_42BFE75225644E24ABC0A549BDDADC81 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0E339EB4F2E94E22B2F518449E7F4A2E }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A085EF165D68453CAB03205AF6BDCC18 }}
+
+      - name: Deploy startup script
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az webapp deploy --src-path ${{ github.workspace }}/startup.sh --name python-oryx-hiyosh --resource-group python-oryx-rg --type startup --track-status false
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
