@@ -61,6 +61,11 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      - name: Deploy startup script
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az webapp deploy --src-path ${{ github.workspace }}/src/main/azure/createPasswordlessDataSource.sh --name python-oryx-hiyosh --resource-group python-oryx-rg --type startup --track-status false
       
       - name: Login to Azure
         uses: azure/login@v2
