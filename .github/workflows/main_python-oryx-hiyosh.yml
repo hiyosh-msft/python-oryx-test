@@ -55,9 +55,10 @@ jobs:
   # deploy web app
   - name: Deploy
     uses: azure/webapps-deploy@v3
+    id: deploy-to-webapp
     with:
-     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-     package: ${{ env.WORKING_DIRECTORY }}
+      app-name: 'python-oryx-hiyosh'
+      slot-name: 'Production'
 
   # Azure logout
   - name: logout
