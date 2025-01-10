@@ -50,7 +50,7 @@ jobs:
      
   # deploy web app
   - name: Deploy
-  - uses: azure/webapps-deploy@v3
+    uses: azure/webapps-deploy@v3
     with:
      app-name: ${{ env.AZURE_WEBAPP_NAME }}
      package: ${{ env.WORKING_DIRECTORY }}
