@@ -58,7 +58,6 @@ jobs:
     with:
      app-name: ${{ env.AZURE_WEBAPP_NAME }}
      package: ${{ env.WORKING_DIRECTORY }}
-     startup-command: ${{ env.STARTUP_COMMAND }}
 
   # Azure logout
   - name: logout
